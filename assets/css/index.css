@@ -1,0 +1,35 @@
+.login-logo {
+	width: 400px;
+	height: auto;
+	display: block;
+	position: inherit;
+	margin: 25% auto;
+}
+
+.login-heading {
+	margin: 20px 20px 40px 20px;
+	text-align: center;
+}
+.login-form-container {
+	padding: 8% 10%;
+}
+.login-container {
+	margin-top: 10%;
+	background-color: #f1f8e9;
+	border-radius: 10px;
+}
+.login-logo-container {
+	margin: 5% 0%;
+	border-right: 10px solid #e1e8d7;
+}
+.login-icon {
+	width: 120px;
+	height: auto;
+	display: block;
+	position: inherit;
+	margin: auto;
+}
+.login-text {
+	font-size: 40px;
+	font-weight: 600;
+}

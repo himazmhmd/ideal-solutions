@@ -247,3 +247,12 @@ a.article:hover {
 	top: 15%;
 	right: 40%;
 }
+.btn-asign-technician-confirm {
+	margin-right: 10px;
+}
+.approveBtn {
+	margin-right: 10px;
+}
+.denyBtn {
+	margin-right: 10px;
+}

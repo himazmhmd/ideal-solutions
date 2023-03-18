@@ -11,6 +11,13 @@
 			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 			crossorigin="anonymous"
 		/>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+			integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script
 			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
@@ -227,15 +234,14 @@
 					<div class="content-card shadow-sm">
 						<div class="row">
 							<div class="col-6">
-								<h5 class="fw-bold mb-3">Employees List</h5>
+								<h5 class="fw-bold mb-3">Job List</h5>
 							</div>
 							<div class="col-6 text-end">
 								<button class="btn btn-sm btn-primary btn-add-employee">
-									<i
-										class="menu-icon mdi mdi-account-multiple-plus-outline"
-										style="color: white; margin: 10px"
-									></i
-									>Add Employee
+									<img
+										src="./assets/img/icons/plus.png"
+										style="width: 10px; margin-right: 10px"
+									/>Add Job
 								</button>
 							</div>
 						</div>
@@ -243,22 +249,97 @@
 							<table id="dataTable" class="table table-striped w-100">
 								<thead class="table-heading">
 									<tr>
-										<th>Name</th>
-										<th>Image</th>
-										<th>Address</th>
-										<th>Joint Date</th>
-										<th>Employee Status</th>
-										<th>Client</th>
-										<th>Accepted On</th>
+										<th>Complaint No</th>
+										<th>Type</th>
+										<th>Status</th>
+										<th>Contact Info</th>
+										<th>Location</th>
+										<th>Created By</th>
+										<th>Created Date</th>
+										<th>Assigned To</th>
+										<th>Notes</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td colspan="1000" class="text-center">
-											<span class="d-block py-3">No result found!</span>
+										<td>C-108-1100089</td>
+										<td>Technical</td>
+										<td>Pending</td>
+										<td>+974 1234 1234</td>
+										<td>Mansoura</td>
+										<td>Miceal</td>
+										<td>12-03-2023 11.30</td>
+										<td>None</td>
+										<td>Urgent</td>
+										<td>
+											<button class="btn btn-sm btn-primary btn-assign">
+												Assign
+											</button>
+											<button class="btn btn-sm btn-warning btn-edit-job">
+												Edit
+											</button>
+											<button class="btn btn-sm btn-danger btn-delete-job">
+												Delete
+											</button>
 										</td>
 									</tr>
+
+									<tr>
+										<td>C-109-1111089</td>
+										<td>Electrical</td>
+										<td>Pending</td>
+										<td>+974 5678 5678</td>
+										<td>Al Wabb</td>
+										<td>Miceal</td>
+										<td>11-03-2023 11.30</td>
+										<td>Ahamed</td>
+										<td>No Comments</td>
+										<td>
+											<button class="btn btn-sm btn-info btn-reassign-job">
+												Re Assign
+											</button>
+											<button class="btn btn-sm btn-warning btn-edit-job">
+												Edit
+											</button>
+											<button class="btn btn-sm btn-danger btn-delete-job">
+												Delete
+											</button>
+										</td>
+									</tr>
+									<tr>
+										<td>C-109-1111089</td>
+										<td>Electrical</td>
+										<td>Completed</td>
+										<td>+974 5678 5678</td>
+										<td>Al Wabb</td>
+										<td>Miceal</td>
+										<td>11-03-2023 11.30</td>
+										<td>Ahamed</td>
+										<td>No Comments</td>
+										<td>
+											<button class="btn btn-sm btn-success btn-approve-job">
+												Approve
+											</button>
+										</td>
+									</tr>
+									<tr>
+										<td>C-109-1111089</td>
+										<td>Electrical</td>
+										<td>Approved</td>
+										<td>+974 5678 5678</td>
+										<td>Al Wabb</td>
+										<td>Miceal</td>
+										<td>11-03-2023 11.30</td>
+										<td>Ahamed</td>
+										<td>No Comments</td>
+										<td>Completed Task</td>
+									</tr>
+									<!-- <tr>
+                    <td colspan="1000" class="text-center">
+                      <span class="d-block py-3">No result found!</span>
+                    </td>
+                  </tr> -->
 								</tbody>
 							</table>
 							<div class="content-loader" style="display: none">
@@ -269,5 +350,109 @@
 				</div>
 			</div>
 		</div>
+
+		<script id="viewProof" type="text/x-handlebars-template">
+			<form id="viewProofForm">
+				<div class="row form-group text-start" style="margin-top: 20px;">
+					<h3 style="text-align: center; font-weight:900">
+						User KYC Information</h3>
+
+				</div>
+
+				<div class="row form-group text-start">
+					<h6 style="text-align:center">Proof Images</h6>
+					<div class="col-4" style="padding:20px">
+
+						<img
+							src="assets/img/no-image-found.png"
+							alt="Proof image"
+							width="100%"
+							height="auto"
+							style="display: block;
+									margin-left: auto;
+									margin-right: auto;"
+						/>
+					</div>
+					<div class="col-4" style="padding:20px">
+						<img
+							src="assets/img/no-image-found.png"
+							alt="Proof image"
+							width="100%"
+							height="auto"
+							style="display: block;
+									margin-left: auto;
+									margin-right: auto;"
+						/>
+					</div>
+					<div class="col-4" style="padding:20px">
+						<img
+							src="assets/img/no-image-found.png"
+							alt="Proof image"
+							width="100%"
+							height="auto"
+							style="display: block;
+									margin-left: auto;
+									margin-right: auto;"
+						/>
+					</div>
+				</div>
+				<div class="row form-group text-start" style="margin-top: 10px;">
+					<div class="col-5" style="text-align:right; ">
+						<h6>Complaint No</h6>
+					</div>
+					<div class="col-1" style="text-align:center">
+						<h5> :</h5>
+					</div>
+					<div class="col-5">
+						<h6>C-109-1111089 </h6>
+					</div>
+				</div>
+				<div class="row form-group text-start" style="margin-top: 10px;">
+					<div class="col-5" style="text-align:right; ">
+						<h6>Type</h6>
+					</div>
+					<div class="col-1" style="text-align:center">
+						<h5> :</h5>
+					</div>
+					<div class="col-5">
+						<h6>Electrical </h6>
+					</div>
+				</div>
+				<div class="row form-group text-start" style="margin-top: 10px;">
+					<div class="col-5" style="text-align:right; ">
+						<h6>Contact Info</h6>
+					</div>
+					<div class="col-1" style="text-align:center">
+						<h5> :</h5>
+					</div>
+					<div class="col-5">
+						<h6>+974 5678 5678 </h6>
+					</div>
+				</div>
+				<div class="row form-group text-start" style="margin-top: 10px;">
+					<div class="col-5" style="text-align:right; ">
+						<h6>Assigned Technician</h6>
+					</div>
+					<div class="col-1" style="text-align:center">
+						<h5> :</h5>
+					</div>
+					<div class="col-5">
+						<h6>Miceal</h6>
+					</div>
+				</div>
+
+				<div class="row form-group text-start" style="margin-top: 10px;">
+					<label style=" margin:10px;text-align: center;">Comments</label>
+					<textarea
+						name="trans_id"
+						class="form-control mb-2"
+						placeholder="Transaction ID"
+						cols="25"
+						rows="3"
+					></textarea>
+				</div>
+
+			</form>
+		</script>
 	</body>
 </html>
